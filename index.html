@@ -25,43 +25,43 @@
         @font-face {
             font-family: 'Kalameh';
             src: url('./fonts/KALAMEH-THIN.woff2') format('woff2');
-            font-weight: 100; /* Thin */
+            font-weight: 100;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Kalameh';
             src: url('./fonts/KALAMEH-REGULAR.woff2') format('woff2');
-            font-weight: 400; /* Regular */
+            font-weight: 400;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Kalameh';
             src: url('./fonts/KALAMEH-BOLD.woff2') format('woff2');
-            font-weight: 700; /* Bold */
+            font-weight: 700;
             font-style: normal;
             font-display: swap;
         }
         @font-face {
             font-family: 'Kalameh';
             src: url('./fonts/KALAMEH-BLACK.woff2') format('woff2');
-            font-weight: 900; /* Black */
+            font-weight: 900;
             font-style: normal;
             font-display: swap;
         }
 
         body {
-            font-family: 'Oxanium', sans-serif; /* Requested English Font */
+            font-family: 'Oxanium', sans-serif;
             background-color: #050505;
             color: #ffffff;
             overflow-x: hidden;
-            cursor: none; /* Custom cursor active */
-            scroll-behavior: smooth; /* Native Smooth Scroll */
+            cursor: none;
+            scroll-behavior: smooth;
         }
 
         .font-fa {
-            font-family: 'Kalameh', 'Vazirmatn', Tahoma, sans-serif; /* Requested Persian Font with Fallbacks */
+            font-family: 'Kalameh', 'Vazirmatn', Tahoma, sans-serif;
         }
 
         /* --- Custom Cursor --- */
@@ -159,7 +159,16 @@
             en: {
                 nav: { work: "Projects", about: "About", contact: "Connect" },
                 hero: { name: "ARIAN TABIB", sub: "ARCHITECT & VISUALIZER" },
-                filters: { all: "All Works", arch: "Architecture", interior: "Interior", cgi: "CGI" },
+                filters: { 
+                    all: "All", 
+                    arch: "Architecture", 
+                    interior: "Interior Design", 
+                    ai: "AI Projects",
+                    exec: "Executive",
+                    cgi: "3D Modeling",
+                    sketch: "Sketches",
+                    ads: "Product Ads"
+                },
                 contact: { title: "Let's Build Your Vision" },
                 about: {
                     title: "The Architect",
@@ -172,7 +181,16 @@
             fa: {
                 nav: { work: "پروژه‌ها", about: "درباره من", contact: "ارتباط" },
                 hero: { name: "آرین طبیب", sub: "معمار و تصویرساز" },
-                filters: { all: "همه آثار", arch: "معماری", interior: "طراحی داخلی", cgi: "شبیه‌سازی" },
+                filters: { 
+                    all: "همه", 
+                    arch: "پروژه های معماری", 
+                    interior: "طراحی داخلی", 
+                    ai: "پروژه های هوش مصنوعی",
+                    exec: "پروژه های اجرایی",
+                    cgi: "مدل سازی سه بعدی",
+                    sketch: "اسکیس",
+                    ads: "تبلیغات محصولات"
+                },
                 contact: { title: "بیایید رویایی بسازیم" },
                 about: {
                     title: "درباره من",
@@ -184,23 +202,26 @@
             }
         };
 
+        // PROJECTS DATA with new categories, multiple tags, order, and video support
         const projects = [
             { 
-                id: 1, 
+                id: 1,
+                order: 1,
                 title: { en: "Experience Center", fa: "مرکز تجربه سعادت‌آباد" }, 
-                type: "arch", 
+                tags: ["arch"], // Tag based categorization
                 loc: "Tehran",
                 img: "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&q=80&w=1200", 
                 gallery: [
                     "https://images.unsplash.com/photo-1577495508048-b635879837f1?auto=format&fit=crop&q=80&w=1600",
-                    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1600",
-                    "https://images.unsplash.com/photo-1479839672679-a455b180916c?auto=format&fit=crop&q=80&w=1600"
-                ]
+                    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1600"
+                ],
+                video: "" // Optional video URL (mp4/webm)
             },
             { 
                 id: 2, 
+                order: 2,
                 title: { en: "Signature Suite", fa: "سوئیت سیگنیچر" }, 
-                type: "interior", 
+                tags: ["interior", "exec"], 
                 loc: "Mahmudabad",
                 img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&q=80&w=1200",
                 gallery: [
@@ -210,8 +231,9 @@
             },
             { 
                 id: 3, 
+                order: 3,
                 title: { en: "Mix Plus CGI", fa: "کمپین میکس پلاس" }, 
-                type: "cgi", 
+                tags: ["cgi", "ads"], 
                 loc: "CGI",
                 img: "https://images.unsplash.com/photo-1633613286848-e6f43bbafb8d?auto=format&fit=crop&q=80&w=1200",
                 gallery: [
@@ -221,19 +243,20 @@
             },
             { 
                 id: 4, 
+                order: 4,
                 title: { en: "Forest Sanctuary", fa: "پناهگاه جنگلی" }, 
-                type: "arch", 
+                tags: ["arch", "cgi"], 
                 loc: "Mazandaran",
                 img: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1200",
                 gallery: [
-                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600",
-                    "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1600"
+                    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&q=80&w=1600"
                 ]
             },
             { 
                 id: 5, 
+                order: 5,
                 title: { en: "Timeless Home", fa: "خانه بی‌زمان" }, 
-                type: "interior", 
+                tags: ["interior"], 
                 loc: "Tehran",
                 img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&q=80&w=1200",
                 gallery: [
@@ -242,8 +265,9 @@
             },
             { 
                 id: 6, 
+                order: 6,
                 title: { en: "Industrial Atelier", fa: "آتلیه صنعتی" }, 
-                type: "interior", 
+                tags: ["interior", "exec"], 
                 loc: "Office",
                 img: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200",
                 gallery: [
@@ -252,22 +276,24 @@
             },
             { 
                 id: 7, 
-                title: { en: "Urban Complex", fa: "مجتمع شهری تبریز" }, 
-                type: "arch", 
-                loc: "Tabriz",
-                img: "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=1200",
+                order: 7,
+                title: { en: "AI Concept", fa: "کانسپت هوش مصنوعی" }, 
+                tags: ["ai"], 
+                loc: "Concept",
+                img: "https://images.unsplash.com/photo-1620641788421-7f1c338e4200?auto=format&fit=crop&q=80&w=1200",
                 gallery: [
-                    "https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=1600"
+                    "https://images.unsplash.com/photo-1620641788421-7f1c338e4200?auto=format&fit=crop&q=80&w=1600"
                 ]
             },
             { 
                 id: 8, 
-                title: { en: "Minimal Villa", fa: "ویلا مینیمال کیش" }, 
-                type: "arch", 
-                loc: "Kish",
-                img: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&q=80&w=1200",
+                order: 8,
+                title: { en: "Hand Sketch", fa: "اسکیس دستی" }, 
+                tags: ["sketch"], 
+                loc: "Sketchbook",
+                img: "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&q=80&w=1200",
                 gallery: [
-                    "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&q=80&w=1600"
+                    "https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&q=80&w=1600"
                 ]
             }
         ];
@@ -339,17 +365,20 @@
                 document.getElementById('work').scrollIntoView({ behavior: 'smooth' });
             };
 
-            const nextImage = (e) => {
+            const nextMedia = (e) => {
                 e.stopPropagation();
                 if (selectedProject) {
-                    setModalImageIndex((prev) => (prev + 1) % selectedProject.gallery.length);
+                    // Count gallery images + video (if exists)
+                    const totalMedia = selectedProject.gallery.length + (selectedProject.video ? 1 : 0);
+                    setModalImageIndex((prev) => (prev + 1) % totalMedia);
                 }
             };
 
-            const prevImage = (e) => {
+            const prevMedia = (e) => {
                 e.stopPropagation();
                 if (selectedProject) {
-                    setModalImageIndex((prev) => (prev - 1 + selectedProject.gallery.length) % selectedProject.gallery.length);
+                    const totalMedia = selectedProject.gallery.length + (selectedProject.video ? 1 : 0);
+                    setModalImageIndex((prev) => (prev - 1 + totalMedia) % totalMedia);
                 }
             };
 
@@ -358,7 +387,10 @@
                 setModalImageIndex(0);
             };
 
-            const filteredProjects = filter === 'all' ? projects : projects.filter(p => p.type === filter);
+            // Filter & Sort Logic
+            const filteredProjects = projects
+                .filter(p => filter === 'all' || p.tags.includes(filter))
+                .sort((a, b) => a.order - b.order);
 
             return (
                 <div className={`min-h-screen ${isRTL ? 'font-fa' : ''}`} dir={isRTL ? 'rtl' : 'ltr'}>
@@ -372,7 +404,6 @@
                         <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
                             {/* Logo Image */}
                             <a href="#" onClick={scrollToTop} className="z-50 block w-12 h-12 cursor-none" onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)}>
-                                {/* Make sure to upload your logo as 'logo.png' inside an 'images' folder */}
                                 <img 
                                     src="./images/logo.png" 
                                     onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/100x100/white/black?text=AT"; }} 
@@ -388,8 +419,14 @@
                                         {label}
                                     </a>
                                 ))}
-                                <button onClick={() => setLang(lang === 'en' ? 'fa' : 'en')} className="text-xs font-bold border border-white/20 px-3 py-1 rounded hover:bg-white hover:text-black transition-all ml-4" onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)}>
-                                    {lang === 'en' ? 'فا' : 'EN'}
+                                <button onClick={() => setLang(lang === 'en' ? 'fa' : 'en')} className="w-8 h-8 rounded-full overflow-hidden border border-white/20 hover:scale-110 transition-transform ml-4" onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)}>
+                                    {/* Flag Image - make sure to upload flag.jpg to images folder */}
+                                    <img 
+                                        src="./images/flag.jpg" 
+                                        onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/50x50/white/black?text=" + (lang === 'en' ? 'FA' : 'EN'); }}
+                                        alt="Switch Language" 
+                                        className="w-full h-full object-cover" 
+                                    />
                                 </button>
                             </nav>
 
@@ -405,7 +442,14 @@
                             {Object.entries(t.nav).map(([key, label]) => (
                                 <a key={key} href={`#${key}`} onClick={() => setMenuOpen(false)} className="text-2xl text-white font-light">{label}</a>
                             ))}
-                            <button onClick={() => { setLang(lang === 'en' ? 'fa' : 'en'); setMenuOpen(false); }} className="mt-8 text-sm text-accent border border-accent px-6 py-2 rounded-full">SWITCH LANG</button>
+                            <button onClick={() => { setLang(lang === 'en' ? 'fa' : 'en'); setMenuOpen(false); }} className="mt-8 w-10 h-10 rounded-full overflow-hidden border border-accent">
+                                <img 
+                                    src="./images/flag.jpg" 
+                                    onError={(e) => { e.target.onerror = null; e.target.src = "https://placehold.co/50x50/white/black?text=" + (lang === 'en' ? 'FA' : 'EN'); }}
+                                    alt="Switch Language" 
+                                    className="w-full h-full object-cover" 
+                                />
+                            </button>
                         </div>
                     )}
 
@@ -438,12 +482,12 @@
 
                     {/* --- PROJECTS --- */}
                     <section id="work" className="py-24 px-4 md:px-12 container mx-auto">
-                        <div className="flex flex-wrap gap-6 mb-12 justify-center md:justify-start pb-4 border-b border-white/10">
+                        <div className="flex flex-wrap gap-4 gap-y-3 mb-12 justify-center md:justify-start pb-4 border-b border-white/10">
                             {Object.keys(t.filters).map((key) => (
                                 <button 
                                     key={key}
                                     onClick={() => setFilter(key)}
-                                    className={`text-xs font-bold uppercase tracking-widest transition-all ${filter === key ? 'text-accent' : 'text-secondary hover:text-white'}`}
+                                    className={`text-xs font-bold uppercase tracking-widest transition-all px-3 py-1 rounded-full border ${filter === key ? 'border-accent text-accent' : 'border-transparent text-secondary hover:text-white'}`}
                                     onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)}
                                 >
                                     {t.filters[key]}
@@ -451,7 +495,8 @@
                             ))}
                         </div>
 
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+                        {/* Updated Grid: Ensures 2 cols on smallest screens */}
+                        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
                             {filteredProjects.map((project) => (
                                 <div 
                                     key={project.id} 
@@ -466,7 +511,7 @@
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
                                         <span className="text-accent text-[10px] uppercase tracking-widest mb-1">{project.loc}</span>
-                                        <h3 className={`text-lg font-bold text-white ${isRTL ? 'font-fa' : ''}`}>
+                                        <h3 className={`text-sm md:text-lg font-bold text-white ${isRTL ? 'font-fa' : ''}`}>
                                             {project.title[lang]}
                                         </h3>
                                     </div>
@@ -502,14 +547,13 @@
                         </div>
                     </section>
 
-                    {/* --- ABOUT ME (New Section) --- */}
+                    {/* --- ABOUT ME --- */}
                     <section id="about" className="py-24 px-6 bg-[#080808] border-t border-white/5">
                         <div className="container mx-auto max-w-6xl">
                             <div className={`flex flex-col md:flex-row items-center gap-12 md:gap-20 ${isRTL ? 'md:flex-row-reverse' : ''}`}>
                                 {/* Image */}
                                 <div className="w-full md:w-1/2 aspect-[3/4] md:aspect-[4/5] relative">
                                     <div className="absolute top-4 left-4 w-full h-full border border-white/10 z-0"></div>
-                                    {/* REPLACE SRC WITH YOUR PHOTO */}
                                     <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=800" alt="Arian Tabib" className="w-full h-full object-cover relative z-10 grayscale hover:grayscale-0 transition-all duration-700" />
                                 </div>
                                 
@@ -552,26 +596,36 @@
                                     <Icons.Close />
                                 </button>
 
-                                {/* Image/Gallery Section */}
+                                {/* Image/Video Section */}
                                 <div className="w-full md:w-2/3 h-[50vh] md:h-auto relative bg-black group">
-                                    <img 
-                                        src={selectedProject.gallery[modalImageIndex]} 
-                                        className="w-full h-full object-cover transition-opacity duration-300" 
-                                        alt="Project Detail" 
-                                    />
+                                    {/* Check if current index is for video */}
+                                    {selectedProject.video && modalImageIndex === selectedProject.gallery.length ? (
+                                        <video 
+                                            src={selectedProject.video} 
+                                            controls 
+                                            autoPlay 
+                                            className="w-full h-full object-contain"
+                                        ></video>
+                                    ) : (
+                                        <img 
+                                            src={selectedProject.gallery[modalImageIndex]} 
+                                            className="w-full h-full object-cover transition-opacity duration-300" 
+                                            alt="Project Detail" 
+                                        />
+                                    )}
                                     
-                                    {/* Navigation Arrows */}
-                                    {selectedProject.gallery.length > 1 && (
+                                    {/* Navigation Arrows (Only if more than 1 item) */}
+                                    {(selectedProject.gallery.length + (selectedProject.video ? 1 : 0)) > 1 && (
                                         <>
                                             <button 
-                                                onClick={prevImage}
+                                                onClick={prevMedia}
                                                 className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/30 hover:bg-accent text-white backdrop-blur-md rounded-full transition-all cursor-none opacity-0 group-hover:opacity-100"
                                                 onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)}
                                             >
                                                 <Icons.ArrowLeft />
                                             </button>
                                             <button 
-                                                onClick={nextImage}
+                                                onClick={nextMedia}
                                                 className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/30 hover:bg-accent text-white backdrop-blur-md rounded-full transition-all cursor-none opacity-0 group-hover:opacity-100"
                                                 onMouseEnter={() => handleHover(true)} onMouseLeave={() => handleHover(false)}
                                             >
@@ -580,12 +634,19 @@
                                             
                                             {/* Dots */}
                                             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                                                {/* Render dots for images */}
                                                 {selectedProject.gallery.map((_, idx) => (
                                                     <div 
                                                         key={idx} 
                                                         className={`w-1.5 h-1.5 rounded-full transition-all ${idx === modalImageIndex ? 'bg-accent w-4' : 'bg-white/50'}`}
                                                     ></div>
                                                 ))}
+                                                {/* Render dot for video if exists */}
+                                                {selectedProject.video && (
+                                                    <div 
+                                                        className={`w-1.5 h-1.5 rounded-full transition-all ${selectedProject.gallery.length === modalImageIndex ? 'bg-accent w-4' : 'bg-white/50'}`}
+                                                    ></div>
+                                                )}
                                             </div>
                                         </>
                                     )}
@@ -597,13 +658,13 @@
                                     <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">{selectedProject.title[lang]}</h2>
                                     <p className="text-secondary leading-loose text-sm mb-8">
                                         {isRTL ? 
-                                            "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است." : 
-                                            "This space describes the specific architectural challenges and solutions of the project. It highlights the use of light, material selection, and the integration of the structure with its environment."}
+                                            "توضیحات کامل پروژه در اینجا قرار می‌گیرد. این فضا برای شرح کانسپت، چالش‌ها و راه‌حل‌های معماری در نظر گرفته شده است." : 
+                                            "Full project description goes here. This space is reserved for explaining the concept, challenges, and architectural solutions."}
                                     </p>
                                     
                                     <div className="border-t border-white/10 pt-6 grid grid-cols-2 gap-4 text-xs text-white/40 font-mono">
-                                        <div>YEAR: {Math.floor(Math.random() * 4) + 2020}</div>
-                                        <div>TYPE: {selectedProject.type.toUpperCase()}</div>
+                                        <div>ORDER: {selectedProject.order}</div>
+                                        <div>TAGS: {selectedProject.tags.join(', ').toUpperCase()}</div>
                                         <div>ROLE: Lead Architect</div>
                                         <div>STATUS: Completed</div>
                                     </div>
